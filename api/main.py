@@ -16,7 +16,7 @@ def trucks_company():
     return "welcome truck company"
 
 
-@app.route('/trucks/all')
+@app.route('/truck/all')
 def get_all_trucks():
     return jsonify(trucks)
 
@@ -27,7 +27,7 @@ def get_trucks_by_id(truckId):
     return jsonify(res)
 
 
-@app.route('/trucks/save')
+@app.route('/truck/save')
 def create_truck():
     trucks.append(request.json)
     return jsonify(trucks)

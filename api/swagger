@@ -1,0 +1,187 @@
+swagger: "2.0"
+info:
+  description: "This is a sample server truck company server."
+  version: "1.0.0"
+  title: "Swagger truck company"
+  contact:
+    email: "apiteam@swagger.io"
+
+host: "truckcompany.swagger.io"
+basePath: "/v2"
+schemes:
+- "https"
+- "http"
+paths:
+  /truck:
+    post:
+      tags:
+      - "truck/save"
+      summary: "Add a new truck to company"
+      description: ""
+      operationId: "add_truck"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "body"
+        description: "truck object that needs to be added to company"
+        required: true
+        schema:
+          $ref: "#/definitions/truck"
+      responses:
+        "405":
+          description: "Invalid input"
+
+    get:
+      tags:
+      - "truck/<id>"
+      summary: "get a specific truck"
+      description: ""
+      operationId: "get_truck_byId"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      responses:
+        "400":
+          description: "Invalid ID supplied"
+        "404":
+          description: "truck not found"
+  /truck/all:
+    get:
+      tags:
+      - "truck/all"
+      summary: "get all trucks on company"
+      description: ""
+      operationId: "getAll"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      responses:
+        "404":
+          description: "response not found"
+        "500":
+          description: "server not found"
+
+  /truck/delete/<id>:
+    delete:
+      tags:
+      - "truck/delete/<id>"
+      summary: "Delete a specific truck"
+      description: ""
+      operationId: "delete_truck"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      responses:
+        "400":
+          description: "Invalid ID supplied"
+        "404":
+          description: "truck not found"
+
+  /driver:
+    post:
+      tags:
+      - "driver/save"
+      summary: "Add a new driver to company"
+      description: ""
+      operationId: "add_driver"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "body"
+        description: "driver object that needs to be added to company"
+        required: true
+        schema:
+          $ref: "#/definitions/driver"
+      responses:
+        "405":
+          description: "Invalid input"
+
+    get:
+      tags:
+      - "driver/<id>"
+      summary: "get a specific driver"
+      description: ""
+      operationId: "get_driver_byId"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      responses:
+        "400":
+          description: "Invalid ID supplied"
+        "404":
+          description: "driver not found"
+  /driver/all:
+    get:
+      tags:
+      - "driver/all"
+      summary: "get all drivers on company"
+      description: ""
+      operationId: "get_all_driver"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      responses:
+        "404":
+          description: "response not found"
+        "500":
+          description: "server not found"
+
+  /driver/delete/<id>:
+    delete:
+      tags:
+      - "driver/delete/<id>"
+      summary: "Delete a specific driver"
+      description: ""
+      operationId: "delete_driver"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      responses:
+        "400":
+          description: "Invalid ID supplied"
+        "404":
+          description: "driver not found"
+
+
+definitions:
+  truck:
+    type: "object"
+    properties:
+      id:
+        type: "integer"
+        format: "int64"
+      plate:
+        type: "string"
+        format: "truck plate"
+      type:
+        type: "string"
+        format: "truck type"
+      color:
+        type: "string"
+        format: "color"
+
+  driver:
+    type: "object"
+    properties:
+      id:
+        type: "integer"
+        format: "int64"
+      name:
+        type: "string"
+      lastName:
+        type: "string"
+      number:
+        type:  "integer"
+
